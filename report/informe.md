@@ -35,6 +35,13 @@ De esta forma, abordaremos nuestro problema de la siguiente forma:
 * Supongamos ahora que wk ocupa la raíz de ese subárbol.
 * Sea el número medio de comparaciones efectuadas en ese subárbol durante la búsqueda de una clave en el árbol principal.
 
+En nuestro algoritmo, los pasos a realizar son:
+1. Creamos una matriz auxiliar en la que ir guardando los valores.
+2. Tratamos según el número de keys / nodos.
+   1. Si solo tenemos una key el coste es igual a la frecuencia de la key.
+   2. Si tenemos más de una, se irán calculando el respectivo coste.
+3. Teniendo en cuenta longitudes 2, 3, .. (L), la fila de la matriz(i), la columna(j), hacer todas las claves en un intervalo de [i...j] (r) y el coste de cuando una key(r) es la raiz del subarbol (c), procedemos a realizar nuestro algoritmo.
+
 ##### Pseudocódigo
 El pseudocódigo de nuestro árbol mediante programación dinámica sería:
 ```
@@ -77,15 +84,16 @@ end
 El tiempo de complejidad es __O(n⁴)__. Pero este tiempo se puede reducir a __O(n³)__ pre-calculando la suma de las frecuencias en lugar de llamar a SUM una y otra vez.
 
 ##### Comprobaciones
-| Nodos | Iteraciones | Tiempo (~s) |
-| -- | -- | -- |
-| 2 | 3 | 0.11 |
-| 3 | 11 | 0.29 |
-| 4 | 26 | 0.49 |
-| 7 | 133 | 2.30 |
-| 10 | 375 | 22.68|
-| 15 | 1225 | 139.74|
-|50 | 42875| 37589.90|
+
+| Nodos | Iteraciones | Tiempo (~s) |  
+| - | - | - |  
+| 2 | 3 | 0.11 |  
+| 3 | 11 | 0.29 |  
+| 4 | 26 | 0.49 |  
+| 7 | 133 | 2.30 |  
+| 10 | 375 | 22.68|  
+| 15 | 1225 | 139.74|  
+|50 | 42875| 37589.90|  
 
 ![Sin titulo](1.png)
 
@@ -93,7 +101,9 @@ El tiempo de complejidad es __O(n⁴)__. Pero este tiempo se puede reducir a __O
 
 ### Bottom up
 #### Introducción
-Bottom-up es una técnica que se base en ir resolviendo los subproblemas desde los de menor tamaño a los de más. De tal modo que al final nos de un resultado global de todo nuestro problema a resolver.
+Bottom-up es una técnica que se basa en ir resolviendo los subproblemas desde los de menor tamaño a los de más. De tal modo que al final nos de un resultado global de todo nuestro problema a resolver.
+
+En nuestro algoritmo, iremos iterando e insertando en una matriz los resultados de cada subarbol, es decir, la suma de del arbol(i,j). De tal forma que al final nos quedará el subarbol de coste medio mínimo.
 #### Pseudocódigo
 ```
 FUNCTION BOTTOM_UP(keys, freq, n)
