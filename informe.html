@@ -392,6 +392,17 @@ Daniel Fernandez Perez</p>
 <li>Supongamos ahora que wk ocupa la raíz de ese subárbol.</li>
 <li>Sea el número medio de comparaciones efectuadas en ese subárbol durante la búsqueda de una clave en el árbol principal.</li>
 </ul>
+<p>En nuestro algoritmo, los pasos a realizar son:</p>
+<ol>
+<li>Creamos una matriz auxiliar en la que ir guardando los valores.</li>
+<li>Tratamos según el número de keys / nodos.
+<ol>
+<li>Si solo tenemos una key el coste es igual a la frecuencia de la key.</li>
+<li>Si tenemos más de una, se irán calculando el respectivo coste.</li>
+</ol>
+</li>
+<li>Teniendo en cuenta longitudes 2, 3, … (L), la fila de la matriz(i), la columna(j), hacer todas las claves en un intervalo de [i…j] ® y el coste de cuando una key® es la raiz del subarbol ©, procedemos a realizar nuestro algoritmo.</li>
+</ol>
 <h5>Pseudocódigo</h5>
 <p>El pseudocódigo de nuestro árbol mediante programación dinámica sería:</p>
 <pre class="editor-colors lang-text"><div class="line"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>FUNCTION&nbsp;OPTIMAL_BINARY_SEARCH_TREE(keys,&nbsp;freq,&nbsp;n)&nbsp;&nbsp;</span></span></span>
@@ -483,7 +494,8 @@ Daniel Fernandez Perez</p>
 </blockquote>
 <h3>Bottom up</h3>
 <h4>Introducción</h4>
-<p>Bottom-up es una técnica que se base en ir resolviendo los subproblemas desde los de menor tamaño a los de más. De tal modo que al final nos de un resultado global de todo nuestro problema a resolver.</p>
+<p>Bottom-up es una técnica que se basa en ir resolviendo los subproblemas desde los de menor tamaño a los de más. De tal modo que al final nos de un resultado global de todo nuestro problema a resolver.</p>
+<p>En nuestro algoritmo, iremos iterando e insertando en una matriz los resultados de cada subarbol, es decir, la suma de del arbol(i,j). De tal forma que al final nos quedará el subarbol de coste medio mínimo.</p>
 <h4>Pseudocódigo</h4>
 <pre class="editor-colors lang-text"><div class="line"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>FUNCTION&nbsp;BOTTOM_UP(keys,&nbsp;freq,&nbsp;n)</span></span></span>
 </div><div class="line"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>begin</span></span></span>
